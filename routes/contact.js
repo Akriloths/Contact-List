@@ -74,5 +74,23 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     res.json(listContact[req.params.id]);
 })
- 
+
+router.post('/', (req, res) => {
+    var temp = 0;
+    if(listContact.length){
+    temp = parseInt(listContact[listContact.length - 1].id) + 1;
+    }
+        let  tempList = {
+            id : temp.toString(),
+            firstname: req.body.firstname,
+            lastname : req.body.lastname,
+            email :    req.body.email,
+            phone :    req.body.phone,
+            url :      req.body.url,
+            notes :    req.body.notes
+        }
+        listContact.push(tempList);
+    });
+
 module.exports = router;
+
