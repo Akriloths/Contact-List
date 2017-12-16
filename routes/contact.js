@@ -92,5 +92,49 @@ router.post('/', (req, res) => {
         listContact.push(tempList);
     });
 
+    router.delete('/:id', function (req, res) {
+        for(var i=0;i<listContact.length;i++)
+        {
+            if(listContact[i].id == req.params.id){
+                listContact.splice(i, 1);
+            break;
+        }
+        }
+    });
+
+    router.put('/:id',function (req, res){
+        for(var i=0; i<listContact.length; i++)
+        {
+            if(listContact[i].id == req.params.id)
+            {
+                if(listContact[i].firstname!=null)
+                {
+                    listContact[i].firstname = req.body.firstname;
+                }
+                if(listContactlist[i].lastname!=null)
+                {
+                    listContact[i].lastname = req.body.lastname;
+                }
+                if(listContact[i].email!=null)
+                {
+                    listContact[i].email = req.body.email;
+                }
+                if(listContact[i].phone!=null)
+                {
+                    listContact[i].phone = req.body.phone;
+                }
+                if(listContact[i].url!=null)
+                {
+                    listContact[i].url = req.body.url;
+                }
+                if(listContact[i].notes!=null)
+                {
+                    listContact[i].notes = req.body.notes;
+                }
+                break;
+            }   
+        }
+    });
+
 module.exports = router;
 
